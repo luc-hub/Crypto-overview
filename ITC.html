@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information-Theoretic Cryptography</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        section {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #2575fc;
+        }
+        .example, .theory {
+            background: #eef;
+            padding: 10px;
+            border-left: 4px solid #2575fc;
+            margin: 20px 0;
+        }
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #2575fc;
+            color: #fff;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Information-Theoretic Cryptography</h1>
+        <p>A journey through perfect secrecy, authentication, and randomness extraction</p>
+    </header>
+
+    <section>
+        <h2>Perfect Secrecy and the One-Time Pad</h2>
+        <p><strong>Definition:</strong> Perfect secrecy is a cryptographic property where the ciphertext reveals no information about the plaintext, regardless of computational power.</p>
+        <div class="theory">
+            <p>The one-time pad is the only known encryption method achieving perfect secrecy. It requires the key to be:</p>
+            <ul>
+                <li>As long as the message</li>
+                <li>Truly random</li>
+                <li>Used only once</li>
+            </ul>
+        </div>
+        <div class="example">
+            <p><strong>Example:</strong> Encrypting the message "HELLO" using a key "XMCKL".</p>
+            <p><code>Plaintext:  HELLO</code></p>
+            <p><code>Key:        XMCKL</code></p>
+            <p><code>Ciphertext: ZIGGM</code> (calculated using modular addition)</p>
+        </div>
+        <h3>Shannon's Theorem</h3>
+        <p>Shannon proved that a perfectly secure system must meet the following criteria:</p>
+        <ul>
+            <li>The key must be as long as the message</li>
+            <li>The key must be truly random</li>
+            <li>The key must be kept secret and never reused</li>
+        </ul>
+        <div class="diagram">
+            <img src="https://i.imgur.com/HOUnRwR.png" alt="Shannon" style="max-width: 100%;">
+        </div>
+    </section>
+
+    <section>
+        <h2>Perfect Authentication</h2>
+        <p><strong>Definition:</strong> Authentication ensures the integrity and origin of a message, preventing tampering and forgery.</p>
+        <h3>Universal Hashing</h3>
+        <p>Universal hashing is a method for creating hash functions that minimize the probability of collisions. It is key in designing secure authentication schemes.</p>
+        <div class="theory">
+            <p>Given a family of hash functions <code>H</code>, it is <em>universal</em> if for any distinct inputs <code>x</code> and <code>y</code>, the probability that <code>h(x) = h(y)</code> for a randomly chosen <code>h</code> in <code>H</code> is low.</p>
+        </div>
+        <h3>Extractors and the Leftover-Hash Lemma</h3>
+        <p>Extractors are algorithms that derive nearly uniform random bits from weakly random sources. The <strong>Leftover-Hash Lemma</strong> states:</p>
+        <blockquote>
+            If a source has enough entropy and we hash it with a universal hash function, the output will be close to uniform.
+        </blockquote>
+        <div class="diagram">
+            <img src="https://i.imgur.com/mYojDNC.png" alt="Auth" style="max-width: 100%;">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Information-Theoretic Cryptography. All rights reserved.</p>
+    </footer>
+</body>
+</html>

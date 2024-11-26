@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symmetric Cryptography</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-left: 3px solid #4CAF50;
+            overflow-x: auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Symmetric Cryptography</h1>
+    </header>
+
+    <section>
+        <h2>Pseudorandom Generators (PRG)</h2>
+        <p>
+            A Pseudorandom Generator (PRG) is an algorithm that expands a small random seed into a longer sequence of bits that appears random.
+            PRGs are foundational in cryptography, providing efficiency while maintaining security.
+        </p>
+        <h3>Key Concepts</h3>
+        <ul>
+            <li><strong>Hard-core bits:</strong> Bits of the output that are computationally infeasible to predict from the input seed.</li>
+            <li><strong>PRG Constructions:</strong> Often based on mathematical problems such as modular exponentiation or lattice-based cryptography.</li>
+        </ul>
+        <div class="diagram">
+            <img src="https://i.imgur.com/Als0cja.png" alt="PRG">
+            <p><em>PRG</em></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Pseudorandom Functions (PRF)</h2>
+        <p>
+            A Pseudorandom Function (PRF) is a deterministic function that simulates a random function when keyed.
+            It is used in many cryptographic protocols to ensure secure, random-like outputs.
+        </p>
+        <h3>PRF Constructions</h3>
+        <ul>
+            <li>Feistel Networks: A common construction for PRFs, using multiple rounds of mixing and permutations.</li>
+            <li>Applications: MACs, stream ciphers, and secure encryption schemes.</li>
+        </ul>
+        <div class="diagram">
+            <img src="https://i.imgur.com/IRTgHMZ.png" alt="Feistel">
+            <p><em>Feistel network</em></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Symmetric Encryption</h2>
+        <p>
+            Symmetric encryption uses the same key for both encryption and decryption. Popular algorithms include AES (Advanced Encryption Standard) and DES (Data Encryption Standard).
+        </p>
+        <h3>Modes of Operation</h3>
+        <ul>
+            <li><strong>ECB:</strong> Encrypts blocks independently (not secure for patterns).</li>
+            <li><strong>CBC:</strong> Adds chaining between blocks for enhanced security.</li>
+            <li><strong>CTR:</strong> Converts a block cipher into a stream cipher.</li>
+        </ul>
+        <div class="diagram">
+            <img src="https://i.imgur.com/ZpiGOTP.png" alt="CBC">
+            <p><em>Block chaining in CBC mode.</em></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Message Authentication</h2>
+        <p>
+            Ensuring data integrity and authenticity is crucial. Message Authentication Codes (MACs) and authenticated encryption combine encryption with integrity checks.
+        </p>
+        <h3>Definitions and Constructions</h3>
+        <ul>
+            <li><strong>HMAC:</strong> Hash-based MAC, often using SHA-256.</li>
+            <li><strong>Authenticated Encryption:</strong> Combines encryption with a MAC (e.g., GCM mode in AES).</li>
+        </ul>
+        <pre><code>Example: HMAC-SHA256(key, message)</code></pre>
+    </section>
+
+    <section>
+        <h2>Hash Functions</h2>
+        <p>
+            Hash functions compress data into fixed-size digests. They are fundamental in cryptography for data verification.
+        </p>
+        <h3>Key Properties</h3>
+        <ul>
+            <li><strong>Random Oracle Model:</strong> Theoretical model treating hash functions as truly random mappings.</li>
+            <li><strong>Collision Resistance:</strong> It is computationally infeasible to find two inputs with the same hash.</li>
+        </ul>
+        <h3>Merkle-Damgaard Construction</h3>
+        <p>
+            A common construction technique for iterative hash functions, where input blocks are processed sequentially.
+        </p>
+        <div class="diagram">
+            <img src="https://i.imgur.com/UMVVptG.png" alt="Merkle-Damgaard">
+            <p><em>Merkle-Damgaard.</em></p>
+        </div>
+    </section>
+</body>
+</html>

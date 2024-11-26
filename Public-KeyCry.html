@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public-Key Cryptography</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #0073e6;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        pre {
+            background: #e9ecef;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #d63384;
+        }
+        .example {
+            background: #e6f7ff;
+            padding: 1rem;
+            border-left: 5px solid #0073e6;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #0073e6;
+            color: white;
+        }
+        .diagram {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Public-Key Cryptography</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Public-Key Encryption</h2>
+            <p>Public-key cryptography uses two keys: a public key for encryption and a private key for decryption. It enables secure communication over insecure channels.</p>
+            
+            <h3>Definitions</h3>
+            <p>Public-key encryption consists of three algorithms:</p>
+            <ul>
+                <li><strong>Key Generation:</strong> Generates a public and private key pair.</li>
+                <li><strong>Encryption:</strong> Uses the public key to encrypt a message.</li>
+                <li><strong>Decryption:</strong> Uses the private key to decrypt a ciphertext.</li>
+            </ul>
+            
+            <h3>RSA Cryptosystem</h3>
+            <p>The RSA algorithm relies on the difficulty of factoring large composite numbers. It uses the following steps:</p>
+            <ol>
+                <li>Generate two large primes <code>p</code> and <code>q</code>, and compute <code>n = p * q</code>.</li>
+                <li>Choose a public exponent <code>e</code> and compute the private key <code>d</code> such that <code>(e * d) % φ(n) = 1</code>.</li>
+                <li>Encrypt: <code>C = M^e % n</code></li>
+                <li>Decrypt: <code>M = C^d % n</code></li>
+            </ol>
+            <div class="example">
+                <strong>Example:</strong>
+                <p>Suppose <code>p = 61</code>, <code>q = 53</code>, and <code>e = 17</code>. Compute <code>n = 61 * 53 = 3233</code> and find <code>d</code> such that <code>(17 * d) % φ(3233) = 1</code>.</p>
+            </div>
+
+            <h3>ElGamal Cryptosystem</h3>
+            <p>The ElGamal encryption scheme uses the hardness of the discrete logarithm problem. It operates in a finite cyclic group <code>G</code>.</p>
+
+            <h3>Cramer-Shoup Encryption</h3>
+            <p>The Cramer-Shoup scheme is a practical, efficient, and secure encryption algorithm resistant to adaptive chosen ciphertext attacks.</p>
+        </section>
+
+        <section>
+            <h2>Digital Signatures</h2>
+            <p>Digital signatures ensure message integrity and authenticity by enabling the recipient to verify the sender's identity.</p>
+            
+            <h3>Definitions</h3>
+            <p>A digital signature scheme consists of:</p>
+            <ul>
+                <li><strong>Key Generation:</strong> Produces a signing key and a verification key.</li>
+                <li><strong>Signing:</strong> Uses the signing key to generate a signature for a message.</li>
+                <li><strong>Verification:</strong> Uses the verification key to confirm the signature is valid.</li>
+            </ul>
+            
+            <h3>Full-Domain Hash</h3>
+            <p>This technique hashes a message before signing it, ensuring security under the random oracle model.</p>
+
+            <h3>Waters' Signatures</h3>
+            <p>Waters' signatures are efficient signature schemes based on assumptions about bilinear maps and are useful in identity-based systems.</p>
+        </section>
+
+        <section>
+            <h2>Identification Schemes</h2>
+            <p>Identification schemes verify the identity of a party in a communication. They often serve as a foundation for constructing digital signatures.</p>
+            
+            <h3>Constructions</h3>
+            <p>Common constructions involve zero-knowledge proofs, where one party proves knowledge of a secret without revealing it.</p>
+            
+            <h3>Applications</h3>
+            <p>Identification schemes are used in secure login systems and digital signature generation.</p>
+        </section>
+
+        <section>
+            <h2>Identity-Based Encryption (IBE)</h2>
+            <p>Identity-Based Encryption allows the use of identities, such as email addresses, as public keys. The private keys are generated by a trusted authority.</p>
+            
+            <h3>Applications</h3>
+            <p>IBE is useful in systems requiring certificate-less encryption and streamlined key management.</p>
+        </section>
+    </main>
+    <footer>
+        <p>Public-Key Cryptography Explained | © 2024</p>
+    </footer>
+</body>
+</html>

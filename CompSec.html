@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computational Security</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #003366;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+        h2 {
+            color: #003366;
+        }
+        p {
+            margin: 1rem 0;
+        }
+        .example, .definition {
+            background: #e9f5ff;
+            border-left: 5px solid #0066cc;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .scheme {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .scheme img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #003366;
+            color: #fff;
+            margin-top: 2rem;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Computational Security</h1>
+        <p>Understanding the Foundations of Modern Cryptography</p>
+    </header>
+    <section>
+        <h2>1. One-Way Functions (OWF) and Complexity Theory</h2>
+        <div class="definition">
+            <strong>Definition:</strong> A one-way function (OWF) is a function <code>f: X → Y</code> that is easy to compute but hard to invert. 
+            This means that given <code>x</code>, computing <code>f(x)</code> is efficient, but given <code>y</code>, finding any <code>x</code> such that <code>f(x) = y</code> is computationally infeasible.
+        </div>
+        <p>
+            One-way functions are the cornerstone of computational security, ensuring that certain tasks (e.g., breaking encryption) remain practically impossible even with powerful computers.
+        </p>
+        <div class="scheme">
+            <img src="https://i.imgur.com/eu8BikN.png" alt="OWF">
+            <p><em>One-way function</em></p>
+        </div>
+    </section>
+    <section>
+        <h2>2. Brush-up on Number Theory</h2>
+        <p>
+            Number theory provides the foundation for many cryptographic schemes. Key concepts include modular arithmetic, prime factorization, and discrete logarithms.
+        </p>
+        <h3>Candidate OWF</h3>
+        <ul>
+            <li><strong>Factoring:</strong> Given <code>N = p * q</code> (where <code>p</code> and <code>q</code> are large primes), finding <code>p</code> and <code>q</code> is computationally hard.</li>
+            <li><strong>RSA:</strong> Based on the difficulty of inverting modular exponentiation.</li>
+            <li><strong>Discrete Logarithm (DL):</strong> Given <code>y = g^x mod p</code>, finding <code>x</code> is hard.</li>
+            <li><strong>Lattice-based (LWE):</strong> Hardness based on the Learning With Errors problem, resilient even against quantum attacks.</li>
+        </ul>
+        <div class="example">
+            <strong>Example:</strong> RSA Encryption
+            <pre>
+Key generation:
+1. Choose primes p, q.
+2. Compute N = p * q and φ(N) = (p-1)(q-1).
+3. Choose e such that gcd(e, φ(N)) = 1.
+4. Compute d such that e*d ≡ 1 (mod φ(N)).
+
+Public key: (N, e)
+Private key: (N, d)
+
+Encryption: c = m^e mod N
+Decryption: m = c^d mod N
+            </pre>
+        </div>
+    </section>
+    <section>
+        <h2>3. Computational Indistinguishability and Decisional Assumptions</h2>
+        <p>
+            Computational indistinguishability ensures that two distributions are indistinguishable by any efficient algorithm. Decisional assumptions strengthen this concept by proposing specific hard problems.
+        </p>
+        <h3>Key Assumptions</h3>
+        <ul>
+            <li><strong>DDH (Decisional Diffie-Hellman):</strong> Given <code>(g, g^a, g^b)</code>, it is hard to distinguish <code>g^(ab)</code> from a random value.</li>
+            <li><strong>LWE (Learning With Errors):</strong> Distinguishing noisy linear equations from random ones is hard.</li>
+        </ul>
+        <div class="scheme">
+            <img src="https://i.imgur.com/cbosCr0.png" alt="DDH">
+            <p><em>DDH</em></p>
+        </div>
+        <div class="example">
+            <strong>Example:</strong> DDH Challenge
+            <pre>
+Given:
+  g = generator of a group G
+  g^a, g^b (public values)
+Challenge:
+  Distinguish g^(ab) from a random value in G.
+            </pre>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Computational Security Primer. All rights reserved.</p>
+    </footer>
+</body>
+</html>
